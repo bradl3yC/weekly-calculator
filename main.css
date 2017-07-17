@@ -33,10 +33,23 @@
 
 #display-area {
   position: relative;
-  top: 35px
+  top: 35px;
+  left: 10px;
 }
 
 .light-buttons {
+  height: 100px;
   background-color: #93c687;
   color: #666;
+  font-family: sans-serif;
+  font-size: 1.7em;
+  border: .5px solid #b0dba6;
+  width: 24%;
+}
+
+.light-buttons span {
+  padding: 0 53px;
+  position: relative;
+  top: 35px;
+  flex-direction: row;
 }
