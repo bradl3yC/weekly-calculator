@@ -14,8 +14,11 @@
   width: 24%;
 }
 
-.buttons h4 {
+.buttons span {
   padding: 0 53px;
+  position: relative;
+  top: 35px;
+  flex-direction: row;
 }
 
 .display-area {
@@ -26,6 +29,11 @@
   font-size: 1.7em;
   border: .5px solid #b0dba6;
   width: 72.8%;
+}
+
+#display-area {
+  position: relative;
+  top: 35px
 }
 
 .light-buttons {
