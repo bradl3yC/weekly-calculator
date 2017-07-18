@@ -14,13 +14,6 @@
   width: 24%;
 }
 
-.buttons span {
-  padding: 0 53px;
-  position: relative;
-  top: 35px;
-  flex-direction: row;
-}
-
 .display-area {
   height: 100px;
   background-color: #61b34f;
@@ -29,12 +22,6 @@
   font-size: 1.7em;
   border: .5px solid #b0dba6;
   width: 72.8%;
-}
-
-#display-area {
-  position: relative;
-  top: 35px;
-  left: 10px;
 }
 
 .light-buttons {
@@ -47,13 +34,6 @@
   width: 24%;
 }
 
-.light-buttons span {
-  padding: 0 53px;
-  position: relative;
-  top: 35px;
-  flex-direction: row;
-}
-
 .equal-button {
   height: 100px;
   background-color: #61b34f;
@@ -64,9 +44,12 @@
   width: 24%;
 }
 
-.equal-button span {
-  padding: 0 53px;
-  position: relative;
-  top: 35px;
-  flex-direction: row;
+.c-button {
+  height: 100px;
+  background-color: #61b34f;
+  color: #d8efd2;
+  font-family: sans-serif;
+  font-size: 1.7em;
+  border: .5px solid #b0dba6;
+  width: 24%;
 }

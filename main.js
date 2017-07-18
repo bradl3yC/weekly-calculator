@@ -1,82 +1,60 @@
-
-let displayAreaArr = []
 let buttons = document.querySelectorAll(".buttons")
 let displayArea = document.getElementById('display-area')
 let clearButton = document.querySelector('.c-button')
 let operatorButtons = document.querySelectorAll('.operator-buttons')
 let equalButton = document.querySelector('.equal-button')
-let firstNumber = 0 //storage for first number before the operator button press event
-let secondNumber = 0 // storage for second number before equal button press
+let firstNumber = 0.00 //storage for first number before the operator button press event
+let secondNumber = 0.00 // storage for second number before equal button press
 let operator = ""
 
-clearButton.addEventListener('click', () => clear());
-
-buttons.forEach((button) => {
-  button.addEventListener("click", () => show(button))
-})
-
-operatorButtons.forEach((opButton) => {
-  opButton.addEventListener("click", () => operate(opButton))
-})
-
-equalButton.addEventListener("click", () => equals())
-
-const show = (button) => {
-  displayAreaArr.push(button.dataset.value)
-  displayArea.innerHTML = displayAreaArr.join('')
+const show = (event) => {
+  displayArea.textContent += event.target.dataset.value
 }
 
-const clear = () => {
-  displayAreaArr = []
-  displayArea.innerHTML = ""
+const clear = (event) => {
+  displayArea.textContent = ""
 }
 
-const reset = () => {
-  firstNumber = 0
-  secondNumber = 0
+const reset = (event) => {
+  firstNumber = 0.00
+  secondNumber = 0.00
 }
 
-const operate = (button) => {
-  firstNumber += parseInt(displayAreaArr.join(''))
-  operator = button.dataset.value
+const operate = (event) => {
+  firstNumber += parseInt(displayArea.textContent)
+  operator = event.target.dataset.value
   clear()
+  return firstNumber ? firstNumber : displayArea.textContent = "Error: Please start with a number"
 }
 
-const equals = () => {
-  secondNumber += parseInt(displayAreaArr.join(''))
+const equals = (event) => {
+  secondNumber += parseInt(displayArea.textContent)
+  clear()
+  displayArea.textContent = (
+    () => {
+      switch (operator) {
+        case "/": return (firstNumber / secondNumber)
+        case "X": return (firstNumber * secondNumber)
+        case "-": return (firstNumber - secondNumber)
+        case "+": return (firstNumber + secondNumber)
+        default:  return "ERR"
+      }
+    }
+  )()
 
-  switch (operator) {
-    case "/":
-      clear()
-      displayArea.innerHTML = (firstNumber / secondNumber)
-      reset()
-      break;
-    case "X":
-      clear()
-      displayArea.innerHTML = (firstNumber * secondNumber)
-      reset()
-      break
-    case "-":
-      clear()
-      displayArea.innerHTML = (firstNumber - secondNumber)
-      reset()
-      break
-    case "+":
-      clear()
-      displayArea.innerHTML = (firstNumber + secondNumber)
-      reset()
-      break
-    default:
-      console.log("Something wen't wrong")
-      reset()
-      break
-  }
-
+  reset()
 }
 
+clearButton.addEventListener("click", clear)
+
+buttons.forEach(button => button.addEventListener("click", show))
+
+operatorButtons.forEach(button => button.addEventListener("click", operate))
+
+equalButton.addEventListener("click", equals)
 
 // some notes on adding more functionality later
-
+// add functionality for decimals
 
 // Find the index of the operator, store the index -1 and +1 into temp variables
 // do the math for that operator, return the number back to the original array
