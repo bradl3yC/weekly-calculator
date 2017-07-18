@@ -31,32 +31,44 @@ const clear = () => {
   displayArea.innerHTML = ""
 }
 
+const reset = () => {
+  firstNumber = 0
+  secondNumber = 0
+}
+
 const operate = (button) => {
   firstNumber += parseInt(displayAreaArr.join(''))
   operator = button.dataset.value
   clear()
 }
 
-const equals = (operator) => {
+const equals = () => {
   secondNumber += parseInt(displayAreaArr.join(''))
-  console.log(operator)
 
   switch (operator) {
-    case operator === "/":
+    case "/":
       clear()
       displayArea.innerHTML = (firstNumber / secondNumber)
+      reset()
       break;
-    case operator === "*":
+    case "X":
       clear()
       displayArea.innerHTML = (firstNumber * secondNumber)
+      reset()
       break
-    case operator === "-":
+    case "-":
       clear()
       displayArea.innerHTML = (firstNumber - secondNumber)
+      reset()
       break
-    case operator === "+":
+    case "+":
       clear()
       displayArea.innerHTML = (firstNumber + secondNumber)
+      reset()
+      break
+    default:
+      console.log("Something wen't wrong")
+      reset()
       break
   }
 
