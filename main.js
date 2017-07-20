@@ -21,14 +21,14 @@ const reset = (event) => {
 }
 
 const operate = (event) => {
-  firstNumber += parseInt(displayArea.textContent)
+  firstNumber += parseFloat(displayArea.textContent)
   operator = event.target.dataset.value
   clear()
   return firstNumber ? firstNumber : displayArea.textContent = "Error: Please start with a number"
 }
 
 const equals = (event) => {
-  secondNumber += parseInt(displayArea.textContent)
+  secondNumber += parseFloat(displayArea.textContent)
   clear()
   displayArea.textContent = (
     () => {
