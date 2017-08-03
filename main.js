@@ -3,8 +3,8 @@ let displayArea = document.getElementById('display-area')
 let clearButton = document.querySelector('.c-button')
 let operatorButtons = document.querySelectorAll('.operator-buttons')
 let equalButton = document.querySelector('.equal-button')
-let firstNumber = 0.00 //storage for first number before the operator button press event
-let secondNumber = 0.00 // storage for second number before equal button press
+let firstNumber = 0.00
+let secondNumber = 0.00
 let operator = ""
 
 const show = (event) => {
@@ -52,10 +52,3 @@ buttons.forEach(button => button.addEventListener("click", show))
 operatorButtons.forEach(button => button.addEventListener("click", operate))
 
 equalButton.addEventListener("click", equals)
-
-// some notes on adding more functionality later
-// add functionality for decimals
-
-// Find the index of the operator, store the index -1 and +1 into temp variables
-// do the math for that operator, return the number back to the original array
-// loop
